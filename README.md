@@ -1,89 +1,60 @@
-# PowerBI-StarSchema-Sales-Dashboard
-A multi-page Power BI dashboard built on a Star Schema model for retail sales analysis.
 
+📊 Power BI Dashboard: Global Superstore Sales Performance
 🚀 Project Overview
-This project delivers a comprehensive, three-page interactive Power BI dashboard designed to analyze retail sales performance. The report is built on a highly optimized Star Schema data model, ensuring high performance and scalability.
 
-The dashboard effectively caters to two distinct audiences: Executives (strategic overview) and Analysts (diagnostic detail), fulfilling 20 specific requirements related to data modeling, DAX measure creation, advanced visualization, and interactivity.
+This project presents a three-page interactive Power BI dashboard designed to analyze global retail sales performance. Built on a highly optimized Star Schema data model, the report ensures scalability, accuracy, and high performance.
 
-🛠 Technical Architecture and Data Modeling
-The foundation of this project is a robust data model, transforming a single, flat source file into a structured Star Schema.
+The dashboard serves two distinct audiences:
 
-Star Schema Components:
-Table
+Executives – for a high-level strategic overview
 
-Role
+Analysts – for deeper diagnostic detail
 
-Key M-Code Functionality
+It fulfills 20 specific requirements spanning data modeling, DAX measures, advanced visualization, and interactivity.
 
-FactSales
+🛠 Technical Architecture & Data Modeling
 
-Transactional data, containing all key performance metrics (Sales, Profit, Quantity) and Surrogate Keys.
+The project leverages Power Query (M-Code) to transform a single flat source file into a structured Star Schema, providing a strong foundation for analysis.
 
-Removed all descriptive columns and merged in ProductKey, CustomerKey, and GeoKey.
+🔹 Star Schema Components
+Table	Role	Key M-Code Functionality
+FactSales	Central fact table holding all transactional data (Sales, Profit, Quantity). Surrogate keys link to dimension tables.	Removed descriptive columns, merged ProductKey, CustomerKey, GeoKey.
+DimProduct	Stores product attributes (Category, Sub-Category).	Table.Distinct, created stable ProductKey.
+DimCustomer	Stores unique customer details.	Table.Distinct, created stable CustomerKey.
+DimGeography	Stores location attributes (Region, State, City).	Table.Distinct, created stable GeoKey.
+🔹 Key DAX Measures
+Measure	Formula Highlight	Purpose
+YoY Sales Growth %	CALCULATE([Total_Sales], SAMEPERIODLASTYEAR(d_date[Date]))	Compares current period with same period last year; vital for executive reporting.
+Profit Margin %	DIVIDE(SUM(f_sales[Profit]), [Total_Sales])	Core profitability metric displayed in combo charts.
+🗺️ Dashboard Structure & Interactivity
 
-DimProduct
+The dashboard is split into three pages, each optimized for specific analytical needs:
 
-Stores unique product attributes (Category, Sub-Category).
+1️⃣ Executive Summary (Strategic View)
 
-Used Table.Distinct and created a stable ProductKey.
+KPIs: Cards showing Total Sales and YoY Growth % with conditional formatting (green/red).
 
-DimCustomer
+Trend Analysis: Line chart with drill-down hierarchy (Year → Quarter → Month).
 
-Stores unique customer details.
+Filters: Chiclet slicer for intuitive filtering by product category.
 
-Used Table.Distinct and created a stable CustomerKey.
+2️⃣ Detail Analysis (Diagnostic View)
 
-DimGeography
+Advanced Charts: Combo chart (Sales, Profit, Margin %) + Small Multiples by Region.
 
-Stores unique location data (Region, State, City).
+Bookmarks: Toggle between Sales by Region and Sales by Category.
 
-Used Table.Distinct and created a stable GeoKey.
+Top N Products: Multi-row card showcasing Top 5 products by sales.
 
-Key DAX Measures
-The analytical capabilities are driven by Time Intelligence DAX, leveraging the defined date relationship:
+3️⃣ Customer Detail (Entity-Level Drill-through)
 
-Measure
+Drill-through Functionality: Linked via Customer ID.
 
-Formula Highlight
-
-Purpose
-
-YoY Sales Growth %
-
-CALCULATE([Total_Sales], SAMEPERIODLASTYEAR(d_date[Date]))
-
-Compares current period performance against the same period one year prior, essential for executive reporting.
-
-Profit_Margin %
-
-DIVIDE(SUM(f_sales[Profit]), [Total_Sales])
-
-Core profitability metric used in the Combo Chart.
-
-🗺️ Multi-Page Dashboard Structure & Interactivity
-The report is segmented to optimize the user experience and analytical flow.
-
-Page 1: Executive Summary (Strategic View)
-KPIs: Prominent Total Sales and YoY Growth % card with Conditional Formatting (Green/Red).
-
-Trend: Line Chart displaying Sales trend with Drill-down Hierarchy (Year → Quarter → Month).
-
-Filters: Utilizes a Chiclet Slicer for intuitive filtering by Category.
-
-Page 2: Detail Analysis (Diagnostic View)
-Advanced Charts: Features a Combo Chart (Sales, Profit, Margin %) and a sales breakdown using Small Multiples by Region.
-
-Bookmarks: Implemented two bookmarks to allow analysts to toggle the main visual between Sales by Region and Sales by Category views.
-
-Top N: Includes a Multi-row Card showcasing the Top 5 Products by Sales.
-
-Page 3: Customer Detail (Entity-Level Drill-through)
-Functionality: This page is set as the Drill-through target using the Customer ID field.
-
-User Flow: Analysts can right-click any customer in a summary visual on Page 2 and navigate directly here, instantly filtering all cards and tables to that single customer's transaction history.
+User Flow: Right-click any customer on Page 2 → navigate to this page → view that customer’s transaction history (cards & tables auto-filtered).
 
 📸 Dashboard Screenshots
+
+(To be added)
 
 Executive Summary
 
@@ -91,15 +62,8 @@ Detail Analysis
 
 Customer Detail
 
-
-
-
-
-
-
 📂 Project Files
-Dashboard.pbix: The final Power BI report file.
 
-dax_measures.txt: Code snippets for key DAX formulas.
+Dashboard.pbix – Final Power BI report file
 
-power_query_m_code.txt: Code snippets for the foundational ETL steps.
+power_query_m_code.txt – Code snippets for foundational ETL steps
