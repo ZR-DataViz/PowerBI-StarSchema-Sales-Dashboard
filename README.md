@@ -52,9 +52,7 @@ Drill-through Functionality: Linked via Customer ID.
 
 User Flow: Right-click any customer on Page 2 → navigate to this page → view that customer’s transaction history (cards & tables auto-filtered).
 
-📸 Dashboard Screenshots
-
-(To be added)
+📸 Dashboard 
 
 Executive Summary
 
@@ -64,6 +62,7 @@ Customer Detail
 
 📂 Project Files
 
-Dashboard.pbix – Final Power BI report file
+Final PBI Project.pbix – Final Power BI report file
 
-power_query_m_code.txt – Code snippets for foundational ETL steps
+Final PBI Project.pdf – PDF file
+
